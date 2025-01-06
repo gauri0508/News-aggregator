@@ -9,7 +9,8 @@ const popupNotification = document.getElementById('popup-notification');
 // Fetch and display news articles
 document.getElementById('fetch-news').addEventListener('click', async () => {
     const category = categorySelector.value;
-    const url = `${apiBaseUrl}top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+    // const url = `${apiBaseUrl}top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to fetch news articles.');
