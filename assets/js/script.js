@@ -1,6 +1,6 @@
-// Replace with your valid NewsAPI key
-const apiKey = 'caf5f3918c86403b841e9a6a83ecbb9e'; 
-const apiBaseUrl = 'https://newsapi.org/v2/';
+// Replace with your valid CurrentsAPI key
+const apiKey = '90oIjStaww1jy0d1Mu0V2fALW8CO_uvXtPFgyjACODYtpuJT'; // Use your API key here
+const apiBaseUrl = 'https://api.currentsapi.services/v1/';
 const categorySelector = document.getElementById('category-selector');
 const newsContainer = document.getElementById('news-container');
 const bookmarksContainer = document.getElementById('bookmarks-container');
@@ -9,13 +9,13 @@ const popupNotification = document.getElementById('popup-notification');
 // Fetch and display news articles
 document.getElementById('fetch-news').addEventListener('click', async () => {
     const category = categorySelector.value;
-    // const url = `${apiBaseUrl}top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+    const url = `${apiBaseUrl}latest-news?category=${category}&apiKey=${apiKey}`;
+    
     try {
         const response = await fetch(url);
         if (!response.ok) throw new Error('Failed to fetch news articles.');
         const data = await response.json();
-        displayNews(data.articles);
+        displayNews(data.news);
     } catch (error) {
         newsContainer.innerHTML = `<p>Error: ${error.message}</p>`;
         console.error('Error fetching news:', error);
